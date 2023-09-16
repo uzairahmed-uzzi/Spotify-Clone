@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify-All Your Favourite Lists</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="brand"><img src="logo.png" alt="Spotify">Spotify</li>
+            <li>Home</li>
+            <li>About</li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Best Of The Weekend</h1>
+
+        <div id="songsContainer" class="songList">
+               
+        </div>
+            <div class="songBanner"></div>
+    </div>
+    <div class="bottom">
+        <input type="range" name="range" id="myProgressBar" min="0" value="0" max="100">
+        <div class="icons">
+            <!-- fontawesome icons -->
+            <i class="fa-solid fa-2x fa-backward-step"></i>
+            <i id="btnMasterPlay" class="fa-2x fa-regular fa-play-circle "></i>
+            <i class="fa-solid fa-2x fa-forward-step"></i>
+        </div>
+        <div class="songInfo">
+            <img id="dancingGif" src="playing.gif" alt=""><span id="songTitle">Let Me Love You - Justin Bieber</span>
+        </div>
+    </div>
+
+
+    <script src="https://kit.fontawesome.com/d26e9480ed.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
