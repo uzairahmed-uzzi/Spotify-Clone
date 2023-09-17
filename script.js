@@ -3,6 +3,8 @@ console.log("Welcome to Spotify");
 let songIndex=0;
 let audioElement= new Audio('./songs/1.WEBM');
 let masterPlay= document.getElementById("btnMasterPlay");
+let nextPlay= document.getElementById("btnNextPlay");
+let prevPlay= document.getElementById("btnPrevPlay");
 let progressBar=document.getElementById("myProgressBar");
 let dancingGif=document.getElementById("dancingGif");
 let songTitle=document.getElementById("songTitle");
@@ -54,6 +56,19 @@ const playMusic=()=>{
 }
 //Handle Play/Pause Click
 masterPlay.addEventListener('click',playMusic);
+nextPlay.addEventListener('click',()=>{
+    if(songIndex<(songs.length-1)){
+        songIndex++;
+        playMusic();
+    }
+
+});
+prevPlay.addEventListener("click",()=>{
+    if(songIndex>0){
+        songIndex--;
+        playMusic();
+    }
+});
 
 //handle time update events
 
