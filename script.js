@@ -17,40 +17,43 @@ let songs=[
 let songsContainer=document.getElementById("songsContainer");
 
 // audioElement.play().then();
+
 (()=>{
     songs.forEach((val,ind)=>{
         songsContainer.innerHTML+=`<div class="songItem">
     <img src=${val.coverPath} alt="Item">
-    <span>${val.songName}</span>
+    <span class="songName">${val.songName}</span>
     <span class="songListPlay">
-        <span class="timeStamp">5:34 <i class="fa-regular fa-play-circle "></i></span>
+        <span class="timeStamp">5:34 <i class="fa-regular songItemPlay fa-play-circle "></i></span>
     </span>
     </div>`;
     })
 })();
-//Handle Play/Pause Click
-masterPlay.addEventListener('click',()=>{
-if(audioElement.paused||audioElement.currentTime<=0){
-   console.log( songs[songIndex].songName + " "+ "is playing");
-   songTitle.innerText=songs[songIndex].songName;
-   audioElement.src = songs[songIndex].filePath;
-
-   audioElement.play().then();
-   masterPlay.classList.remove("fa-regular");
-   masterPlay.classList.remove("fa-play-circle");
-   masterPlay.classList.add("fa-solid");
-   masterPlay.classList.add("fa-pause");
-   dancingGif.style.opacity=1;
-}else{
-    audioElement.pause();
-    masterPlay.classList.remove("fa-solid");
-    masterPlay.classList.remove("fa-pause");
-   masterPlay.classList.add("fa-regular");
-   masterPlay.classList.add("fa-play-circle");
-   dancingGif.style.opacity=0;
-
+const pauseMusic=()=>{
+    audioElement.pause();                        
+        masterPlay.classList.remove("fa-solid");     
+        masterPlay.classList.remove("fa-pause");     
+        masterPlay.classList.add("fa-regular");      
+        masterPlay.classList.add("fa-play-circle");  
+        dancingGif.style.opacity=0;                
 }
-});
+const playMusic=()=>{
+    if(audioElement.paused||audioElement.currentTime<=0){
+       console.log( songs[songIndex].songName + " "+ "is playing");
+       songTitle.innerText=songs[songIndex].songName;
+       audioElement.src = songs[songIndex].filePath; 
+       audioElement.play().then();                   
+       masterPlay.classList.remove("fa-regular");    
+       masterPlay.classList.remove("fa-play-circle");
+       masterPlay.classList.add("fa-solid");         
+       masterPlay.classList.add("fa-pause");         
+       dancingGif.style.opacity=1;                   
+    }else{
+    pauseMusic();
+    }
+}
+//Handle Play/Pause Click
+masterPlay.addEventListener('click',playMusic);
 
 //handle time update events
 
@@ -62,4 +65,36 @@ progressBar.value=parseInt((audioElement.currentTime/audioElement.duration)*100)
 
 progressBar.addEventListener('change',()=>{
     audioElement.currentTime=((progressBar.value/100)*audioElement.duration);
-})
+});
+const makeAllPlays=()=>{
+    Array.from(document.getElementsByClassName("songItemPlay")).forEach((element)=>{
+        audioElement.pause();
+        element.classList.remove("fa-solid");
+        element.classList.remove("fa-pause");
+        element.classList.add("fa-regular");
+        element.classList.add("fa-play-circle");
+
+    });
+}
+
+//songItemPlay handle events
+
+Array.from(document.getElementsByClassName("songItemPlay")).forEach((element,ind)=>{
+    element.addEventListener("click",(e)=>{
+        if(e.target.classList.contains("fa-pause")){
+            pauseMusic();                           
+
+            makeAllPlays();
+            
+        }else{                                     
+            makeAllPlays();
+            songIndex=ind;
+            playMusic();                             
+            e.target.classList.remove("fa-regular");     
+            e.target.classList.remove("fa-play-circle");
+            e.target.classList.add("fa-solid");         
+            e.target.classList.add("fa-pause");         
+        }
+        
+    });
+});

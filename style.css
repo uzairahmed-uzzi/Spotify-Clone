@@ -72,7 +72,10 @@ transition: background-color 0.3s ease;
 
 }
 
-
+.songName{
+    width: 50%;
+    text-align: left;
+}
 
 .songList{
    
@@ -121,4 +124,8 @@ transition: background-color 0.3s ease;
 #songTitle{
     margin: 0 5px;
     transition: 0.4s ease-in-out;
+}
+.songListPlay{
+    width: 20%;
+    text-align: left;
 }
