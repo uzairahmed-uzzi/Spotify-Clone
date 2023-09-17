@@ -64,7 +64,7 @@ nextPlay.addEventListener('click',()=>{
 
 });
 prevPlay.addEventListener("click",()=>{
-    if(songIndex>0){
+    if(songIndex>=0&&!(songIndex<0)){
         songIndex--;
         playMusic();
     }
