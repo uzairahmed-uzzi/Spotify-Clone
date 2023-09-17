@@ -58,7 +58,12 @@ masterPlay.addEventListener('click',playMusic);
 //handle time update events
 
 audioElement.addEventListener('timeupdate',()=>{
-progressBar.value=parseInt((audioElement.currentTime/audioElement.duration)*100);    
+progressBar.value=parseInt((audioElement.currentTime/audioElement.duration)*100); 
+if(parseInt(progressBar.value)===100&&songIndex<(songs.length-1)){
+songIndex++;
+playMusic();
+
+}   
 });
 
 //handle progresBar change events
