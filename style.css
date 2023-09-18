@@ -198,9 +198,19 @@ nav ul{
 
 }
 .bottom .songInfo{
+    white-space: nowrap;
     position: relative;
+    width: 90vw;
     bottom: 65%;
     left: 0;
+
+}
+#songTitle{
+    width: 30vw;
+    overflow-x: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    
 }
 .bottom .icons{
     position: relative;
