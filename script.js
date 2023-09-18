@@ -42,10 +42,7 @@ const makeAllPlays=()=>{
     });
 }
 function pauseMusic(){
-    audioElement.pause();
-    const pausedTime = audioElement.currentTime;
-    // Add this line to remember the position
-    audioElement.setAttribute("data-paused-time", pausedTime);                        
+    audioElement.pause();                       
     masterPlay.classList.remove("fa-solid");     
     masterPlay.classList.remove("fa-pause");     
     masterPlay.classList.add("fa-regular");      
@@ -55,6 +52,7 @@ function pauseMusic(){
 const  playMusic=async()=>{
     if (audioElement.paused || audioElement.currentTime <= 0) {
         const item = document.getElementsByClassName("songItemPlay")[songIndex];
+
         songTitle.innerText = songs[songIndex].songName;
         audioElement.src = songs[songIndex].filePath;
 
@@ -77,6 +75,7 @@ const  playMusic=async()=>{
         makeOnePlay(item);
     } else {
         pauseMusic();
+        makeAllPlays();
     }
 
 }
@@ -86,7 +85,6 @@ audioElement.addEventListener('error', (event) => {
 });
 //Handle Play/Pause Click
 masterPlay.addEventListener('click',()=>{
-    
     playMusic();
 
 
