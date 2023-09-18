@@ -8,14 +8,17 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
 
 }
 nav{
  font-family: 'Ubuntu',sans-serif;   
+ width: 100vw;
 }
 nav ul{
     display: flex;
     align-items: center;
+    justify-content:space-around;
     list-style: none;
     height: 55px;
     background-color: black;
@@ -69,6 +72,8 @@ width: 80vw;
 cursor: pointer;
 background-color: aquamarine;
 transition: background-color 0.3s ease;
+display: block;
+
 
 }
 
@@ -128,4 +133,78 @@ transition: background-color 0.3s ease;
 .songListPlay{
     width: 20%;
     text-align: left;
+}
+@media screen and (max-width:1000px) {
+    body{
+        height: 100vh;
+    }
+  .container{
+    border-radius: 0;
+    background-blend-mode:lighten;
+    width: 100vw;
+    height: 70vh;
+    padding-left: 15px;
+    padding-right: 30px;
+    margin: 0 auto;
+  }
+  .songList{
+    margin: 0;
+    width: 100%;
+    font-size: 10px;
+  }
+  .songItem{
+    width: 100%;
+}
+.songItem img{
+    width: 20px;
+    margin: 0 -20px 0  10px;
+    border-radius: 50%;
+}
+.songItem .timeStamp{
+    margin: 0px;
+}
+h1{
+    font-size: large;
+}
+nav{
+    height: 10vh;
+}
+nav ul{
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    padding-right: 20px;
+    font-size: 10px;
+
+}
+.brand img{
+    height: 100%;
+    padding: 0 8px;
+    }
+.brand{
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 0.8rem; 
+}
+
+.bottom{
+    overflow: hidden;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 20vh;
+    padding: 0 ;
+    background-color: rgba(0,0,0,0.9);
+
+}
+.bottom .songInfo{
+    position: relative;
+    bottom: 65%;
+    left: 0;
+}
+.bottom .icons{
+    position: relative;
+    bottom: 0;
+    
+}
 }
